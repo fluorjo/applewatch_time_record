@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'time record',
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -68,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print(Localizations.localeOf(context));
     return Localizations.override(
       context: context,
-      locale: Locale("ko"),
+      locale: const Locale("ko"),
       child: Scaffold(
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
