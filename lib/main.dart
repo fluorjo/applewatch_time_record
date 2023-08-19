@@ -15,12 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'time record',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         primarySwatch: Colors.blue,
