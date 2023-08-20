@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/intl_generated.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +14,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'time record',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: const [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ko'),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -90,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                AppLocalizations.of(context)!.titleOfApp("wwww"),
+                "app title"
               ),
               Text(
                 '$_counter',
