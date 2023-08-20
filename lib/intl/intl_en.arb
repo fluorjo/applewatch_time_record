@@ -1,3 +1,12 @@
 {
-    "appTitle":"time record"
+    "titleOfApp":"welcome to {appTitle}",
+    "@titleOfApp":{
+        "description":"The title of app",
+        "placeholders":{
+            "appTitle":{
+                "type":"String",
+                "example":"time record"
+            }
+        }
+    }
 }
