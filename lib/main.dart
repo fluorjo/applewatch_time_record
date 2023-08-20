@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                AppLocalizations.of(context)!.appTitle("wwww"),
+                AppLocalizations.of(context)!.titleOfApp("wwww"),
               ),
               Text(
                 '$_counter',
