@@ -1,8 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
 
-void main() {
-  runApp(const MyApp());
+// 앱에서 지원하는 언어 리스트 변수
+final supportedLocales = [const Locale('en', 'US'), const Locale('ko', 'KR')];
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // easylocalization 초기화!
+  await EasyLocalization.ensureInitialized();
+
+  runApp(
+    EasyLocalization(
+        // 지원 언어 리스트
+        supportedLocales: supportedLocales,
+        //path: 언어 파일 경로
+        path: 'assets/translations',
+        //fallbackLocale supportedLocales에 설정한 언어가 없는 경우 설정되는 언어
+        fallbackLocale: const Locale('en', 'US'),
+
+        //startLocale을 지정하면 초기 언어가 설정한 언어로 변경됨
+        //만일 이 설정을 하지 않으면 OS 언어를 따라 기본 언어가 설정됨
+        //startLocale: Locale('ko', 'KR')
+
+        child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,15 +35,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'time record',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ko'),
-      ],
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -95,12 +110,34 @@ class _MyHomePageState extends State<MyHomePage> {
             // horizontal).
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "app title"
-              ),
+              const Text("test").tr(),
               Text(
                 '$_counter',
                 style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              OutlinedButton.icon(
+                onPressed: () {
+                  // 영어로 언어 변경
+                  // 이후 앱을 재시작하면 영어로 동작
+                  EasyLocalization.of(context)!
+                      .setLocale(const Locale('en', 'US'));
+                },
+                icon: const Icon(Icons.language_outlined),
+                label: Text(
+                  'english'.tr(),
+                ),
+              ),
+              OutlinedButton.icon(
+                onPressed: () {
+                  // 한국어로 언어 변경
+                  // 이후 앱을 재시작하면 한국어로 동작
+                  EasyLocalization.of(context)!
+                      .setLocale(const Locale('ko', 'KR'));
+                },
+                icon: const Icon(Icons.language_outlined),
+                label: Text(
+                  'korean'.tr(),
+                ),
               ),
             ],
           ),
