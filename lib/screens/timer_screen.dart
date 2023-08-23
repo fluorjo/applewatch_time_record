@@ -50,6 +50,21 @@ class _TimerScreenState extends State<TimerScreen> {
         onPressed: () {},
       ),
     ];
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'pomodoro'.tr(),
+        ),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.5,
+            width: MediaQuery.of(context).size.height * 0.5,
+          )
+        ],
+      ),
+    );
   }
 }
