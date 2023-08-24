@@ -61,7 +61,17 @@ class _TimerScreenState extends State<TimerScreen> {
         children: [
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.5,
-            width: MediaQuery.of(context).size.height * 0.5,
+            width: MediaQuery.of(context).size.height * 0.6,
+            child: const Center(
+              child: Text(
+                '00:00',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           )
         ],
       ),
