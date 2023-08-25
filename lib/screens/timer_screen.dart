@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -11,7 +13,7 @@ class TimerScreen extends StatefulWidget {
 class _TimerScreenState extends State<TimerScreen> {
   @override
   Widget build(BuildContext context) {
-    final List<Widget> runningBottons = [
+    final List<Widget> runningButtons = [
       ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
         onPressed: () {},
@@ -59,9 +61,13 @@ class _TimerScreenState extends State<TimerScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SizedBox(
+          Container(
             height: MediaQuery.of(context).size.height * 0.5,
             width: MediaQuery.of(context).size.height * 0.6,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: 1 == 2 ? Colors.green : Colors.blue,
+            ),
             child: const Center(
               child: Text(
                 '00:00',
@@ -72,6 +78,14 @@ class _TimerScreenState extends State<TimerScreen> {
                 ),
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: 1 == 2
+                ? const []
+                : 1 == 2
+                    ? stoppedButtons
+                    : runningButtons,
           )
         ],
       ),
