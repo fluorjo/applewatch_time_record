@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+enum TimerStatus { running, paused, stopped, resting }
 
 class TimerScreen extends StatefulWidget {
   const TimerScreen({super.key});
@@ -11,6 +11,22 @@ class TimerScreen extends StatefulWidget {
 }
 
 class _TimerScreenState extends State<TimerScreen> {
+  static const WORK_SECONDS = 25;
+  static const REST_SECONDS = 5;
+
+  late TimerStatus _timerStatus;
+  late int _timer;
+  late int _pomodoroCount;
+
+  @override
+  void initState() {
+    super.initState();
+    _timerStatus = TimerStatus.stopped;
+    print(_timerStatus.toString());
+    _timer = WORK_SECONDS;
+    _pomodoroCount = 0;
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> runningButtons = [
