@@ -27,6 +27,41 @@ class _TimerScreenState extends State<TimerScreen> {
     _pomodoroCount = 0;
   }
 
+  void run() {
+    setState(() {
+      _timerStatus = TimerStatus.running;
+      print("[=>] $_timerStatus");
+      runTimer();
+    });
+  }
+
+  void rest() {
+    setState(() {
+      _timer = REST_SECONDS;
+      _timerStatus = TimerStatus.resting;
+      print("[=>] $_timerStatus");
+    });
+  }
+
+  void pause() {
+    setState(() {
+      _timerStatus = TimerStatus.paused;
+      print("[=>] $_timerStatus");
+    });
+  }
+
+  void resume() {
+    run();
+  }
+
+  void stop() {
+    setState(() {
+      _timer = WORK_SECONDS;
+      _timerStatus = TimerStatus.stopped;
+      print("[=>] $_timerStatus");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Widget> runningButtons = [
