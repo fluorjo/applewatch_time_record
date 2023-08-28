@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -59,6 +61,45 @@ class _TimerScreenState extends State<TimerScreen> {
       _timer = WORK_SECONDS;
       _timerStatus = TimerStatus.stopped;
       print("[=>] $_timerStatus");
+    });
+  }
+
+  void runTimer() async {
+    Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      switch (_timerStatus) {
+        case TimerStatus.paused:
+          t.cancel();
+          break;
+        case TimerStatus.stopped:
+          t.cancel();
+          break;
+        case TimerStatus.running:
+          if (_timer <= 0) {
+            showToast("작업 완료!");
+            rest();
+          } else {
+            setState(() {
+              _timer -= 1;
+            });
+          }
+          break;
+        case TimerStatus.resting:
+          if (_timer <= 0) {
+            setState(() {
+              _pomodoroCount += 1;
+            });
+            showToast("오늘 $_pomodoroCount개의 뽀모도로를 달성했습니다.");
+            t.cancel();
+            stop();
+          } else {
+            setState(() {
+              _timer -= 1;
+            });
+          }
+          break;
+        default:
+          break;
+      }
     });
   }
 
