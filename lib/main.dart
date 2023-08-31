@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:time_record/screens/timer_screen.dart';
+import 'package:time_record/screens/timer_practice.dart';
 
 // 앱에서 지원하는 언어 리스트 변수
 final supportedLocales = [const Locale('en', 'US'), const Locale('ko', 'KR')];
@@ -42,8 +43,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-     // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const TimerScreen(),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: const TimerScreen(),
+      home: Homepage(),
     );
   }
 }
