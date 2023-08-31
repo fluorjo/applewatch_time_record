@@ -44,8 +44,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      //home: const TimerScreen(),
-      home: Homepage(),
+      home: const TimerScreen(),
+      //home: Homepage(),
     );
   }
 }

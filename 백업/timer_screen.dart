@@ -14,7 +14,7 @@ class TimerScreen extends StatefulWidget {
 }
 
 class _TimerScreenState extends State<TimerScreen> {
-  static const WORK_SECONDS = 30 * 60;
+  static const WORK_SECONDS = 25 * 60;
   static const REST_SECONDS = 5 * 60;
 
   late TimerStatus _timerStatus;
