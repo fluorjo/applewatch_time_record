@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:time_record/screens/gauge_practice.dart';
 import 'package:time_record/screens/timer_screen.dart';
 import 'package:time_record/screens/timer_practice.dart';
 
@@ -43,8 +44,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const TimerScreen(),
+      home:  MyHomePage2(title: 'Flutter Demo Home Page'),
+      //home: const TimerScreen(),
       //home: Homepage(),
     );
   }
