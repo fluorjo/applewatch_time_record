@@ -3,12 +3,43 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-class IntegerExample extends StatefulWidget {
+class numberpick extends StatefulWidget {
   @override
-  _IntegerExampleState createState() => _IntegerExampleState();
+  _numberpickState createState() => new _numberpickState();
 }
 
-class _IntegerExampleState extends State<IntegerExample> {
+class _numberpickState extends State<numberpick> {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Integer'),
+              Tab(text: 'Decimal'),
+            ],
+          ),
+          title: Text('Numberpicker example'),
+        ),
+        body: TabBarView(
+          children: [
+            _IntegerExample(),
+            _DecimalExample(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _IntegerExample extends StatefulWidget {
+  @override
+  __IntegerExampleState createState() => __IntegerExampleState();
+}
+
+class __IntegerExampleState extends State<_IntegerExample> {
   int _currentIntValue = 10;
   int _currentHorizontalIntValue = 10;
 
@@ -84,6 +115,33 @@ class _IntegerExampleState extends State<IntegerExample> {
             ),
           ],
         ),
+      ],
+    );
+  }
+}
+
+class _DecimalExample extends StatefulWidget {
+  @override
+  __DecimalExampleState createState() => __DecimalExampleState();
+}
+
+class __DecimalExampleState extends State<_DecimalExample> {
+  double _currentDoubleValue = 3.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        SizedBox(height: 16),
+        Text('Decimal', style: Theme.of(context).textTheme.headline6),
+        DecimalNumberPicker(
+          value: _currentDoubleValue,
+          minValue: 0,
+          maxValue: 10,
+          decimalPlaces: 2,
+          onChanged: (value) => setState(() => _currentDoubleValue = value),
+        ),
+        SizedBox(height: 32),
       ],
     );
   }

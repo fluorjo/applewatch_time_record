@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
       //home: const TimerScreen(),
       //home: Homepage(),
       //home: MyHomePage3(),
-      home: IntegerExample(),
+      home: numberpick(),
     );
   }
 }
