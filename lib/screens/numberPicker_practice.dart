@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class numberpick extends StatefulWidget {
+  const numberpick({super.key});
+
   @override
-  _numberpickState createState() => new _numberpickState();
+  _numberpickState createState() => _numberpickState();
 }
 
 class _numberpickState extends State<numberpick> {
@@ -15,13 +17,13 @@ class _numberpickState extends State<numberpick> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(text: 'Integer'),
               Tab(text: 'Decimal'),
             ],
           ),
-          title: Text('Numberpicker example'),
+          title: const Text('Numberpicker example'),
         ),
         body: TabBarView(
           children: [
@@ -47,8 +49,8 @@ class __IntegerExampleState extends State<_IntegerExample> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 16),
-        Text('Default', style: Theme.of(context).textTheme.headline6),
+        const SizedBox(height: 16),
+        Text('Default', style: Theme.of(context).textTheme.titleLarge),
         NumberPicker(
           value: _currentIntValue,
           minValue: 0,
@@ -57,12 +59,12 @@ class __IntegerExampleState extends State<_IntegerExample> {
           haptics: true,
           onChanged: (value) => setState(() => _currentIntValue = value),
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: Icon(Icons.remove),
+              icon: const Icon(Icons.remove),
               onPressed: () => setState(() {
                 final newValue = _currentIntValue - 10;
                 _currentIntValue = newValue.clamp(0, 100);
@@ -70,7 +72,7 @@ class __IntegerExampleState extends State<_IntegerExample> {
             ),
             Text('Current int value: $_currentIntValue'),
             IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onPressed: () => setState(() {
                 final newValue = _currentIntValue + 20;
                 _currentIntValue = newValue.clamp(0, 100);
@@ -78,9 +80,9 @@ class __IntegerExampleState extends State<_IntegerExample> {
             ),
           ],
         ),
-        Divider(color: Colors.grey, height: 32),
-        SizedBox(height: 16),
-        Text('Horizontal', style: Theme.of(context).textTheme.headline6),
+        const Divider(color: Colors.grey, height: 32),
+        const SizedBox(height: 16),
+        Text('Horizontal', style: Theme.of(context).textTheme.titleLarge),
         NumberPicker(
           value: _currentHorizontalIntValue,
           minValue: 0,
@@ -99,7 +101,7 @@ class __IntegerExampleState extends State<_IntegerExample> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: Icon(Icons.remove),
+              icon: const Icon(Icons.remove),
               onPressed: () => setState(() {
                 final newValue = _currentHorizontalIntValue - 10;
                 _currentHorizontalIntValue = newValue.clamp(0, 100);
@@ -107,7 +109,7 @@ class __IntegerExampleState extends State<_IntegerExample> {
             ),
             Text('Current horizontal int value: $_currentHorizontalIntValue'),
             IconButton(
-              icon: Icon(Icons.add),
+              icon: const Icon(Icons.add),
               onPressed: () => setState(() {
                 final newValue = _currentHorizontalIntValue + 20;
                 _currentHorizontalIntValue = newValue.clamp(0, 100);
@@ -132,8 +134,8 @@ class __DecimalExampleState extends State<_DecimalExample> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 16),
-        Text('Decimal', style: Theme.of(context).textTheme.headline6),
+        const SizedBox(height: 16),
+        Text('Decimal', style: Theme.of(context).textTheme.titleLarge),
         DecimalNumberPicker(
           value: _currentDoubleValue,
           minValue: 0,
@@ -141,7 +143,7 @@ class __DecimalExampleState extends State<_DecimalExample> {
           decimalPlaces: 2,
           onChanged: (value) => setState(() => _currentDoubleValue = value),
         ),
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
       ],
     );
   }
