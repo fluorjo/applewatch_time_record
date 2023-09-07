@@ -75,7 +75,7 @@ class _MyHomePage4State extends State<MyHomePage4> {
           isReverse: true,
 
           // Handles Animation Direction (true for Reverse Animation, false for Forward Animation).
-          isReverseAnimation: false,
+          isReverseAnimation: true,
 
           // Handles visibility of the Countdown Text.
           isTimerTextShown: true,
